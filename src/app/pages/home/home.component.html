@@ -1,0 +1,49 @@
+<div class="container mx-auto px-4">
+  <h1 class="text-3xl font-bold mt-5 mb-5">{{ title }}</h1>
+
+  <div class="max-w-sm w-full lg:max-w-full lg:flex mb-10">
+    <div
+      class="lg:w-sm flex-none bg-cover rounded-t lg:rounded-t-none lg:rounded-l text-center overflow-hidden"
+    >
+      <google-map height="650px" [zoom]="4" [center]="center">
+        <map-marker
+          *ngFor="let p of listaCiudades"
+          [position]="p.position"
+          [label]="p.label"
+          [title]="p.title"
+        ></map-marker>
+      </google-map>
+    </div>
+    <div
+      class="border-r border-b border-l border-gray-400 lg:border-l-0 lg:border-t lg:border-gray-400 bg-white rounded-b lg:rounded-b-none lg:rounded-r p-4 flex flex-col justify-between leading-normal"
+    >
+      <div class="mb-8">
+        <div class="text-gray-900 font-bold text-xl mb-5">OpenWeather API</div>
+        <div
+          id="resultado"
+          *ngFor="let p of listaCiudades"
+          class="text-gray-700 text-base mb-5"
+        >
+          <ul>
+            <li class="font-bold underline">{{ p.title }}</li>
+            <li>
+              <ul *ngFor="let w of p.weather">
+                <li class="text-sm">{{ w.main }}</li>
+                <li class="text-sm">{{ w.description }}</li>
+              </ul>
+            </li>
+          </ul>
+          
+        </div>
+
+        <div class="flex items-center mt-20">
+          <div class="text-sm">
+            <p class="text-gray-900 leading-none font-bold">Daniel M. D&iacute;az</p>
+            <p class="text-gray-600">Mayo 20 / 2023</p>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</div>
